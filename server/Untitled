@@ -1,0 +1,6 @@
+PORT=5000
+NODE_ENV=development
+MONGO_URI=mongodb+srv://Admin:<Admin1234>@team-task-manager.eiyjhfw.mongodb.net/?appName=team-task-manager
+JWT_SECRET=CmDrhbXJoSI3kO9wZE6danjG1QK5BNtLHqPsRxYUzyM40iAT
+JWT_EXPIRES_IN=7d
+CLIENT_URL=http://localhost:5173
