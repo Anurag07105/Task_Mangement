@@ -13,7 +13,8 @@ const app = express();
 app.use(helmet());
 const allowedOrigins = [
   process.env.CLIENT_URL,
-  "http://localhost:5173"
+  "http://localhost:5173",
+  "https://taskmangement-production-31da.up.railway.app"
 ].filter(Boolean);
 
 app.use(
