@@ -10,7 +10,6 @@ import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 
 const app = express();
 
-app.use(helmet());
 const allowedOrigins = [
   process.env.CLIENT_URL,
   "http://localhost:5173",
@@ -21,15 +20,25 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+
+      const isAllowed = allowedOrigins.some((o) => o.replace(/\/$/, "") === origin.replace(/\/$/, ""));
+
+      if (isAllowed || origin.endsWith(".up.railway.app")) {
         callback(null, true);
       } else {
-        callback(new Error("CORS policy: origin not allowed"));
+        console.error(`CORS blocked for origin: ${origin}`);
+        callback(null, false);
       }
     },
-    credentials: true
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"]
   })
 );
+
+app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
