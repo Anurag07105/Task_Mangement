@@ -3,7 +3,7 @@ import axios from "axios";
 const axiosClient = axios.create({
   baseURL:
     import.meta.env.VITE_API_URL ||
-    "https://teamtaskmanger-production-a7a3.up.railway.app/api",
+    "https://taskmangement-production-31da.up.railway.app/api",
 });
 
 axiosClient.interceptors.request.use((config) => {
