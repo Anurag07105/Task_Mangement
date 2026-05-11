@@ -14,7 +14,7 @@ app.use(helmet());
 const allowedOrigins = [
   process.env.CLIENT_URL,
   "http://localhost:5173",
-  "taskmangement-production-e8d6.up.railway.app"
+  "https://taskmangement-production-e8d6.up.railway.app"
 ].filter(Boolean);
 
 app.use(
