@@ -13,7 +13,7 @@ const app = express();
 const allowedOrigins = [
   process.env.CLIENT_URL,
   "http://localhost:5173",
-  "https://taskmangement-production-31da.up.railway.app",
+  "https://taskmangement-production-dc4e.up.railway.app",
   "https://taskmangement-production-e8d6.up.railway.app"
 ].filter(Boolean);
 
